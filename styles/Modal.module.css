@@ -1,0 +1,48 @@
+.modal {
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  position: absolute;
+  top: 0;
+  z-index: 99;
+
+  --modal-bg: rgb(240, 240, 240);
+  --backdrop-bg: rgba(0, 0, 0, .5);
+}
+
+.modal .content {
+  background-color: var(--modal-bg);
+  border-radius: 10px;
+  position: relative;
+  z-index: 100;
+  left: 50%;
+  top: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  padding: 2em;
+  max-width: 600px;
+}
+
+.modal .content fieldset {
+  border: none;
+  padding: 0;
+}
+
+.modal button {
+  width: 100%;
+  margin-top: 1em;
+}
+
+.modal button:nth-child(2) {
+  margin-top: 0;
+}
+
+.modal .backdrop {
+  width: 100%;
+  height: 100%;
+  z-index: 98;
+  position: fixed;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  background-color: var(--backdrop-bg);
+}

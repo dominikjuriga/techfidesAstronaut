@@ -6,6 +6,15 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+:root {
+  --default-transition: .5s all ease-in-out;
+  --btn-bg-even: rgb(243, 243, 243);
+  --btn-bg-odd: rgb(219, 219, 219);
+  --btn-hover: rgb(200, 200, 200);
+  --btn-submit-bg: rgb(53, 160, 39);
+  --btn-submit-bg-hover: rgb(44, 136, 32);
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -15,12 +24,116 @@ a {
   box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+button {
+  border: 1px solid var(--btn-hover);
+  padding: 1em;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+}
+
+table th,
+table td {
+  padding: .5em;
+}
+
+table .actions {
+  display: table;
+  margin: 0 auto;
+}
+
+table button {
+  padding: 0.5em;
+  margin-right: .5em;
+  background-color: transparent;
+  transition: var(--default-transition);
+}
+
+table button:hover {
+  background-color: var(--btn-hover);
+}
+
+table tbody tr button {
+  border: 1px solid var(--btn-bg-odd);
+}
+
+table tbody tr {
+  background-color: var(----btn-bg-even);
+}
+
+table td {
+  white-space: nowrap;
+}
+
+table tbody tr:nth-child(even) button {
+  border: 1px solid var(--btn-bg-even);
+}
+
+table tbody tr:nth-child(even) {
+  background-color: var(--btn-bg-odd);
+}
+
+form fieldset:disabled input {
+  background-color: var(--btn-bg-odd);
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.form div {
+  display: flex;
+  flex-direction: column;
+}
+
+.form input {
+  padding: 1em;
+}
+
+.form button[type="submit"] {
+  background-color: var(--btn-submit-bg);
+  border: none;
+  color: white;
+  transition: var(--default-transition);
+}
+
+.form button[type="submit"]:hover {
+  background-color: var(--btn-submit-bg-hover);
+}
+
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.tableContainer {
+  overflow-x: auto;
+}
+
+.pagination {
+  padding: .5em 0;
+}
+
+.pagination .justify {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.pagination .justify button {
+  margin-right: 0 !important;
+}
+
+.customBtn {
+  margin-right: 1em;
+}
+
+.req {
+  color: red;
 }
