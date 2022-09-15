@@ -5,7 +5,8 @@ import { IAstronaut } from "../interfaces"
 import Modal from '../components/Modal'
 import AstronautForm from "../components/AstronautForm"
 import AstronautTable from "../components/AstronautTable"
-import { astronautFormInitialState } from '../static/initialFormData'
+import { astronautFormInitialState } from '../static'
+import { apiURL } from '../static'
 
 const Home: NextPage = () => {
   const [astronauts, setAstronauts] = useState<IAstronaut[]>([])
@@ -21,7 +22,7 @@ const Home: NextPage = () => {
   }, [page])
 
   const fetchData = async () => {
-    const response = await fetch(`http://localhost:3001/astronauts/${page}`);
+    const response = await fetch(`${apiURL}astronauts/${page}`);
     if (response.status === 200) {
       const result = await response.json()
       setAstronauts(result.data)
@@ -36,7 +37,7 @@ const Home: NextPage = () => {
     if (page === maxPages && astronauts !== null && astronauts.length < 5) {
       setAstronauts(a => [...a, astronaut])
     }
-    if (astronauts?.length === 5) {
+    if (page === maxPages && astronauts?.length === 5) {
       setMaxPages(m => m + 1)
     }
   }
@@ -79,7 +80,7 @@ const Home: NextPage = () => {
 
   const addExampleAstronauts = async () => {
     // Create 11 example astronauts
-    const response = await fetch(`http://localhost:3001/astronauts/example`, {
+    const response = await fetch(`${apiURL}astronauts/example`, {
       method: "POST"
     })
     if (response.status === 200) {
@@ -89,7 +90,7 @@ const Home: NextPage = () => {
 
   const removeAstronaut = async (id: number | null): Promise<void> => {
     if (id === null) return;
-    const response = await fetch(`http://localhost:3001/astronauts/${id}`, {
+    const response = await fetch(`${apiURL}astronauts/${id}`, {
       method: "DELETE"
     });
     switch (response.status) {

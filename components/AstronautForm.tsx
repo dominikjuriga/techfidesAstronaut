@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { IAstronaut } from '../interfaces'
+import { apiURL } from "../static"
 
 interface IProps {
   initialState: IAstronaut,
@@ -32,7 +33,7 @@ const AstronautForm: React.FC<IProps> = ({ initialState, addAstronaut, updateAst
   }
 
   const createAstronautRemote = async () => {
-    return await fetch(`http://localhost:3001/astronauts`,
+    return await fetch(`${apiURL}astronauts`,
       {
         method: "POST",
         body: JSON.stringify(formState),
@@ -43,7 +44,7 @@ const AstronautForm: React.FC<IProps> = ({ initialState, addAstronaut, updateAst
   }
 
   const updateAstronautRemote = async () => {
-    return await fetch(`http://localhost:3001/astronauts/${initialState.id}`,
+    return await fetch(`${apiURL}astronauts/${initialState.id}`,
       {
         method: "PUT",
         body: JSON.stringify(formState),

@@ -5,3 +5,5 @@ export const astronautFormInitialState = {
   superpower: "",
   id: undefined
 }
+
+export const apiURL = "https://techfidesastronaut.onrender.com/"
